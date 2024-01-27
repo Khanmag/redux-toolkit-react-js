@@ -1,0 +1,7 @@
+
+.photoContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
+  justify-content: center;
+}

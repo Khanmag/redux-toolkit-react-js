@@ -1,0 +1,17 @@
+
+.photoCard {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #282828;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 5px;
+  color: white;
+}
+.photoCard > img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
