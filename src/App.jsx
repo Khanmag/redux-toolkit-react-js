@@ -1,6 +1,6 @@
 import { Box, Paper } from "@mui/material"
 import Header from "./components/Header"
-import Galery from "./pages/galery/App"
+import Gallery from "./pages/gallery/App"
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <Header />
       </Paper>
       <Paper>
-        <Galery />
+        <Gallery />
       </Paper>
     </Box>
   )

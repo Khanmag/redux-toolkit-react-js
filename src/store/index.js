@@ -3,7 +3,7 @@ import counterSlice from "./counter/counterSlice";
 import cartSlice from "./cart/cartSlice";
 import authSlice from "./auth/authSlice";
 import likesSlice from "./likes/likesSlice";
-import galerySlice from "./galery/galerySlice";
+import gallerySlice from "./gallery/gallerySlice";
 
 
 const store = configureStore({
@@ -12,7 +12,7 @@ const store = configureStore({
     cart: cartSlice,
     auth: authSlice,
     likes: likesSlice,
-    galery: galerySlice,
+    gallery: gallerySlice,
   }
 })
 export default store

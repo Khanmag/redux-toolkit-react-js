@@ -5,8 +5,8 @@ const initialState = {
   favoritePhotos: [],
 }
 
-const galerySlice = createSlice({
-  name: "galery",
+const gallerySlice = createSlice({
+  name: "gallery",
   initialState,
   reducers: {
     addPhoto(state, action) {
@@ -21,5 +21,5 @@ const galerySlice = createSlice({
   }
 })
 
-export default galerySlice.reducer
-export const { addPhoto, addToFavorite, removeFromFavorite } = galerySlice.actions
+export default gallerySlice.reducer
+export const { addPhoto, addToFavorite, removeFromFavorite } = gallerySlice.actions

@@ -3,10 +3,10 @@ import LikeIcon from "../../../../assets/icons/LikeIcon";
 
 import s from './index.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavorite, removeFromFavorite } from "../../../../store/galery/galerySlice";
+import { addToFavorite, removeFromFavorite } from "../../../../store/gallery/gallerySlice";
 
-const PhotoCard = ({id, url, title }) => {
-  const favoritePhotos = useSelector(store => store.galery.favoritePhotos)
+const PhotoCard = ({ id, url, title }) => {
+  const favoritePhotos = useSelector(store => store.gallery.favoritePhotos)
   const dispatch = useDispatch()
   const isFavorite = favoritePhotos.find(item => id === item)
 

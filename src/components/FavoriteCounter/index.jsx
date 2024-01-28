@@ -5,7 +5,7 @@ import styles from './index.module.css'
 import { useSelector } from 'react-redux';
 
 const FavoriteCounter = () => {
-  const favoritePhotos = useSelector(store => store.galery.favoritePhotos)
+  const favoritePhotos = useSelector(store => store.gallery.favoritePhotos)
   return (
     <Box className={styles.counterIcon}>
       <FavoriteBorderOutlined color='error'/>
