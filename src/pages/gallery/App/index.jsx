@@ -1,16 +1,15 @@
 import { Box, Typography } from "@mui/material";
-import { getGalleryPhotos } from "../../../api/gallery";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPhoto } from "../../../store/gallery/gallerySlice";
+import { fetchPhotos } from "../../../store/gallery/gallerySlice";
 import PhotoCard from "../components/PhotoCard";
 
 import s from './index.module.css'
 import { useInView } from "react-intersection-observer";
 
 const Gallery = () => {
-  const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const hasError = useSelector( store => store.gallery.hasError)
+  const isLoading = useSelector( store => store.gallery.isLoading)
   const [photosOnPage, setPhotosOnPage] = useState(100)
   const photos = useSelector(store => store.gallery.photos)
   const dispatch = useDispatch()
@@ -21,22 +20,9 @@ const Gallery = () => {
     }
   })
 
-  const getPhoto = useCallback(async () => {
-    try {
-      const data = await getGalleryPhotos()
-      dispatch(addPhoto(data))
-      setIsLoading(false)
-    }
-    catch (e) {
-      setIsLoading(false)
-      setError(e.message)
-    }
-  }, [dispatch])
-
   useEffect(() => {
-    setIsLoading(true)
-    getPhoto()
-  }, [getPhoto])
+    dispatch( fetchPhotos() )
+  }, [dispatch])
 
   return (
     <Box>
@@ -44,8 +30,8 @@ const Gallery = () => {
         <Typography variant="h3">Gallery</Typography>
       </Box>
       {
-        error
-          ? <Typography>{error}</Typography>
+        hasError
+          ? <Typography>{hasError}</Typography>
           : (isLoading)
             ? <Typography>Loading...</Typography>
             : <Box className={s.photoContainer}>
