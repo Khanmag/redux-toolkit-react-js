@@ -3,10 +3,10 @@ import { getGalleryPhotos } from "../../api/gallery";
 
 export const fetchPhotos = createAsyncThunk(
   'gallery/fetchPhotos',
-  async (_, {rejectWithValue}) => {
+  async (page, {rejectWithValue}) => {
     try {
-      const data = await getGalleryPhotos()
-      return data
+      const data = await getGalleryPhotos(page)
+      return {data, page} 
     } catch (err) {
       return rejectWithValue(err.message)
     }
@@ -18,6 +18,7 @@ const initialState = {
   favoritePhotos: [],
   isLoading: false,
   hasError: false,
+  page: 1,
   // status: 'pending' | 'rejected' | 'fulfilled'
 }
 
@@ -47,7 +48,8 @@ const gallerySlice = createSlice({
     })
     builder.addCase(fetchPhotos.fulfilled, (state, action) => {
       state.isLoading = false
-      state.photos = action.payload
+      state.photos = action.payload.data
+      state.page = action.payload.page
     })
   }
 
